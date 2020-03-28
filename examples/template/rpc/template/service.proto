@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+package kyett.template;
+option go_package = "template";
+
+service TemplateServicer {
+  rpc Update(UpdateReq) returns (UpdateResp);
+}
+
+message UpdateReq {
+  string data = 1;
+}
+
+message UpdateResp {
+}
