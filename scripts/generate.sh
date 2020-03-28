@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 export SERVICE_NAME=$1
-export RPC_PATH=examples/$SERVICE_NAME/rpc/$SERVICE_NAME/.
+export RPC_PATH=services/$SERVICE_NAME/rpc/$SERVICE_NAME/.
 
 protoc --proto_path=$GOPATH/src:. --twirp_out=. --go_out=. $RPC_PATH/service.proto
 

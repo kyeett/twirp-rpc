@@ -3,7 +3,7 @@ package templateserver
 import (
 	"context"
 
-	pb "github.com/kyeett/twirp-rpc/examples/template/rpc/template"
+	pb "github.com/kyeett/twirp-rpc/services/template/rpc/template"
 	"go.uber.org/zap"
 )
 

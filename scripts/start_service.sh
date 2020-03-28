@@ -7,4 +7,4 @@ fi
 
 export SERVICE_NAME=$1
 
-go run examples/$SERVICE_NAME/cmd/$SERVICE_NAME/main.go
+go run services/$SERVICE_NAME/cmd/$SERVICE_NAME/main.go

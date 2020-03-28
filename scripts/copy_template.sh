@@ -9,10 +9,10 @@ export SERVICE_NAME=$1
 
 export SERVICE_NAME_UPPER_FIRST=$(python -c "print(\"$SERVICE_NAME\".capitalize())")
 
-export BASE_PATH="examples/${SERVICE_NAME}"
+export BASE_PATH="services/${SERVICE_NAME}"
 
 # Create folder structure
-cp -R examples/template $BASE_PATH
+cp -R services/template $BASE_PATH
 mv $BASE_PATH/cmd/template              $BASE_PATH/cmd/$SERVICE_NAME
 mv $BASE_PATH/internal/templateserver   $BASE_PATH/internal/${SERVICE_NAME}server
 mv $BASE_PATH/rpc/template              $BASE_PATH/rpc/$SERVICE_NAME
@@ -38,3 +38,5 @@ IFS=$'\n'
 for ITEM in $ITEMS; do 
     sed -i '' "s/$FIND_THIS/$REPLACE_WITH/g" "$ITEM"
 done
+
+./script/generate.sh $BASE_PATH/rpc/$SERVICE_NAME

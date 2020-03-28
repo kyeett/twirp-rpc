@@ -6,8 +6,8 @@ import (
 
 	"github.com/kyeett/twirp-rpc/common/logger"
 	"github.com/kyeett/twirp-rpc/common/router"
-	"github.com/kyeett/twirp-rpc/examples/template/internal/templateserver"
-	"github.com/kyeett/twirp-rpc/examples/template/rpc/template"
+	"github.com/kyeett/twirp-rpc/services/template/internal/templateserver"
+	"github.com/kyeett/twirp-rpc/services/template/rpc/template"
 )
 
 func main() {
