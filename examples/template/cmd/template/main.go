@@ -1,28 +1,27 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
+	"github.com/kyeett/twirp-rpc/common/logger"
+	"github.com/kyeett/twirp-rpc/common/router"
 	"github.com/kyeett/twirp-rpc/examples/template/internal/templateserver"
 	"github.com/kyeett/twirp-rpc/examples/template/rpc/template"
-
-	"github.com/go-chi/chi"
-	"github.com/go-chi/chi/middleware"
 )
 
 func main() {
-	server := templateserver.New()
+	l := logger.NewDefault()
+	r := router.NewDefault()
+
+	// Server
+	server := templateserver.New(l)
 	twirpHandler := template.NewTemplateServicerServer(server, nil)
-	routes := chi.NewRouter()
-	routes.Use(middleware.RequestID)
-	routes.Use(middleware.Logger)
-	routes.Use(middleware.Recoverer)
-	routes.Mount(template.TemplateServicerPathPrefix, twirpHandler)
-	fmt.Println("Starting server")
-	if err := http.ListenAndServe(":8080", routes); err != nil {
+	r.Mount(template.TemplateServicerPathPrefix, twirpHandler)
+
+	l.Info("Starting server")
+	if err := http.ListenAndServe(":8080", r); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Shutting down server")
+	l.Info("Shutting down server")
 }

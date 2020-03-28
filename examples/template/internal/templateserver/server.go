@@ -5,14 +5,19 @@ import (
 	"log"
 
 	pb "github.com/kyeett/twirp-rpc/examples/template/rpc/template"
+	"go.uber.org/zap"
 )
 
 var _ pb.TemplateServicer = &Server{}
 
-type Server struct{}
+type Server struct {
+	*zap.Logger
+}
 
-func New() *Server {
-	return &Server{}
+func New(logger *zap.Logger) *Server {
+	return &Server{
+		Logger: logger,
+	}
 }
 
 func (s *Server) Update(context.Context, *pb.UpdateReq) (*pb.UpdateResp, error) {
