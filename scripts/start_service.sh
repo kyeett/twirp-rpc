@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo -e "\nERROR: Please specify new service name:\n\n\t./copy_template.sh <SERVICE_NAME>\n"
+  echo -e "\nERROR: Please specify service name:\n\n\t./start_service.sh <SERVICE_NAME>\n"
   exit 1
 fi
 
