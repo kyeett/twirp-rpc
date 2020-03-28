@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo -e "\nERROR: Please specify new service name:\n\n\t./copy_template.sh <SERVICE_NAME>\n"
+  exit 1
+fi
+
+export SERVICE_NAME=$1
+
 export SERVICE_NAME_UPPER_FIRST=$(python -c "print(\"$SERVICE_NAME\".capitalize())")
 
 export BASE_PATH="examples/${SERVICE_NAME}"
